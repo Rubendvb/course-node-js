@@ -1,6 +1,6 @@
-const fs = require("node:fs");
+const fs = require('node:fs');
 
-const stats = fs.statSync("./arquivo.txt");
+const stats = fs.statSync('./arquivo.txt');
 
 console.log(
   stats.isFile(), // Verifica se é um arquivo
