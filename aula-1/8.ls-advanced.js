@@ -2,6 +2,8 @@ const fs = require('node:fs/promises');
 const path = require('node:path');
 const picocolors = require('picocolors');
 
+console.log(process.argv);
+
 const folder = process.argv[2] ?? '.';
 
 async function ls(folder) {
