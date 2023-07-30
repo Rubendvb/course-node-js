@@ -7,31 +7,32 @@ const app = express()
 
 app.disable('x-powered-by') // Remove por segurança
 
+// O middleware feito embaixo já vem nativamente em express
 app.use(express.json())
 
-// middleware
-app.use((req, res, next) => {
-  if (req.method !== 'POST') {
-    return next()
-  }
+// // middleware
+// app.use((req, res, next) => {
+//   if (req.method !== 'POST') {
+//     return next()
+//   }
 
-  if (req.headers['content-type'] !== 'application/json') {
-    return next()
-  }
+//   if (req.headers['content-type'] !== 'application/json') {
+//     return next()
+//   }
 
-  let body = ''
+//   let body = ''
 
-  req.on('data', (chunk) => {
-    body += chunk.toString()
-  })
+//   req.on('data', (chunk) => {
+//     body += chunk.toString()
+//   })
 
-  req.on('end', () => {
-    const data = JSON.parse(body)
-    data.timesstamp = Date.now()
+//   req.on('end', () => {
+//     const data = JSON.parse(body)
+//     data.timesstamp = Date.now()
 
-    res.body = data
-  })
-})
+//     res.body = data
+//   })
+// })
 
 app.get('/pokemon/ditto', (req, res) => {
   res.json(ditto)
