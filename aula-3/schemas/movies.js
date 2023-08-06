@@ -47,11 +47,17 @@ const movieSchema = z.object({
 })
 
 // Função que realiza a validação de um objeto "movie" de acordo com o esquema definido acima
-function validationMovie(object) {
-  return movieSchema.safeParse(object) // Retorna o resultado da validação do objeto em relação ao esquema
+function validationMovie(input) {
+  return movieSchema.safeParse(input) // Retorna o resultado da validação do objeto em relação ao esquema
+}
+
+// Função que realiza a validação de um objeto parcial "movie" de acordo com o esquema definido acima
+function validatePartialMovie(input) {
+  return movieSchema.partial().safeParse(input) // Retorna o resultado da validação do objeto parcial em relação ao esquema
 }
 
 // Exporta a função de validação para ser utilizada em outros módulos
 module.exports = {
   validationMovie,
+  validatePartialMovie,
 }
